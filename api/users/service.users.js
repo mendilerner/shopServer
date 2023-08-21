@@ -6,12 +6,10 @@ const getUsers = async (req, res) => {
     return users;
     };
 
-const getUser = async (_id) => {
-    const user = await userDal.getUser(_id);
+const getUser = async (userId) => {
+    const user = await userDal.getUser(userId);
     return user;
     };
-
-
 
 const updateUser = async (userForUpdate) =>{
     //userForUpdate.password = await Utils.encodedPassword(userForUpdate.password)

@@ -5,10 +5,10 @@ import usersMiddleWare from './middleWare.users.js'
 
 router.get("/", usersMiddleWare.isAdminUser, usersController.getUsers)
 
-// router.get("/:id", usersController.getUser)
+router.get("/:id", usersMiddleWare.isCreatorOrAdmin, usersController.getUser)
 
 router.put("/:id", usersMiddleWare.isCreator, usersController.updateUser)
 
-// router.delete("/", usersController.deleteUsers)
+router.delete("/:id", usersMiddleWare.isCreatorOrAdmin, usersController.deleteUser)
 
 export default router

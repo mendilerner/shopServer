@@ -15,21 +15,16 @@ const getUser = async (_id) => {
 }
 
 const addUser = async (newUser) => {
-    try {
-        const users = await jsonfile.readFile(FILE);
-        users.push(newUser)
-        await jsonfile.writeFile(FILE, users)
-        return newUser
-    }
-    catch (err) {
-        console.log(err);
-    }
+    const users = await jsonfile.readFile(FILE);
+    users.push(newUser)
+    await jsonfile.writeFile(FILE, users)
+    return newUser
+
 }
 
 const updateUser = async (userForUpdate) => {
     const users = await jsonfile.readFile(FILE);
     let userIndex = users.findIndex((user) => user.id === userForUpdate.id)
-    console.log("aaaaaaaaaaaaaaa");
     if (userIndex === -1) {
         return false
     }
@@ -39,21 +34,15 @@ const updateUser = async (userForUpdate) => {
 }
 
 const deleteUser = async (userId) => {
-    try {
-        const users = await jsonfile.readFile(FILE);
-        let userIndex = users.findIndex((user) => user.id === userId)
-        if (userIndex === -1) {
-            return false
-        }
-        const deletedUser = users[userIndex]
-        users.splice(userIndex, 1)
-        await jsonfile.writeFile(FILE, users)
-        console.log(JSON.stringify(deletedUser));
-        return deletedUser
+    const users = await jsonfile.readFile(FILE);
+    let userIndex = users.findIndex((user) => user.id === userId)
+    if (userIndex === -1) {
+        return false
     }
-    catch (err) {
-        console.log(err);
-    }
+    const deletedUser = users[userIndex]
+    users.splice(userIndex, 1)
+    await jsonfile.writeFile(FILE, users)
+    return deletedUser
 }
 
 const funcs = { getUsers, getUser, updateUser, deleteUser }

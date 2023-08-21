@@ -14,7 +14,7 @@ const getUsers = async (req, res) => {
 
 const getUser = async (req, res) => {
     try {
-        const currentId = req.params.id
+        const currentId = Number(req.params.id)
         console.log('enter to user/', currentId);
         const user = await usersService.getUser(currentId);
         if (!user) {
@@ -51,7 +51,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     console.log('enter to delete user');
     try {
-        const userId = req.params.id
+        const userId = Number(req.params.id)
         const deletedUser = await usersService.deleteUser(userId)
         if (deletedUser) {
             res.status(200).json({ deletedUser })

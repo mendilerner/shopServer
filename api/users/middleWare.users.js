@@ -9,24 +9,25 @@ const isAdminCheck = async (password, email) => {
     return false
 }
 
+const isCreatorCheck = async (password, email, processedUserId) => {
+    const users = await usersDal.getUsers()
+    const userCreator = users.find((user) => user.email === email)
+    const processedUser = users.find((user) => user.id === processedUserId)
+    if (userCreator && password === userCreator.password &&
+        processedUser.creator === userCreator.id) {
+        return true
+    }
+    return false
+}
+
 const isAdminUser = async (req, res, next) => {
     try {
         const { password, email } = req.query
-        const users = await usersDal.getUsers()
-        let user = users.find((user) => user.email === email)
-        if (!user) {
-            return res.json({ error: "email does not match" })
-        }
-        if (password === user.password) {
-            if (user.isAdmin) {
-                next()
-            }
-            else {
-                return res.json({ error: "user is not admin" })
-            }
+        if ( await isAdminCheck(password, email)) {
+            next()  
         }
         else {
-            return res.json({ error: "password does not match" })
+            return res.json({ error: "permission denied" });
         }
     }
     catch (err) {
@@ -38,32 +39,17 @@ const isAdminUser = async (req, res, next) => {
 const isCreator = async (req, res, next) => {
     try {
         const id = Number(req.params.id)
-        const creatorPassword = req.query.password
-        const creatorEmail = req.query.email
-        const users = await usersDal.getUsers()
-        let processedUser = users.find((user) => user.id === id)
-        if (!processedUser) {
-            return res.json({ error: "user does not exist" })
+        const { password, email } = req.query
+        if (await isCreatorCheck(password, email, id)) {
+            next()
         }
-        const userCreator = users.find((user) => user.email === creatorEmail)
-        console.log(userCreator);
-        if (!userCreator) {
-            return res.json({ error: "creator does not exist" })
-        }
-        if (creatorPassword === userCreator.password) {
-            if (processedUser.creator === userCreator.id) {
-                next()
-            }
-            else {
-                return res.json({ error: "you are not the creator" })
-            }
-        } else {
-            return res.json({ error: "password does not match" })
+        else {
+            return res.json({ error: "permission denied" });
         }
     }
     catch (err) {
-        console.log(err)
-        res.json({ error: "server error" })
+        console.log(err.message)
+        res.json({ error: err.message || "server error"})
     }
 }
 
@@ -71,18 +57,14 @@ const isCreatorOrAdmin = async (req, res, next) => {
     try {
         const id = Number(req.params.id)
         const { password, email } = req.query
-        const users = await usersDal.getUsers()
-        let user = users.find((user) => user.email === email)
-        if (!user) {
-            return res.json({ error: "email does not match" })
+        if (await isAdminCheck(password, email)) {
+            next()
         }
-        if (password === user.password) {
-            if (user.creator === id || user.isAdmin) {
-                next()
-            }
-            else {
-                return res.json({ error: "user does not allowed" })
-            }
+        else if (await isCreatorCheck(password, email, id)){
+            next() 
+        }
+        else{
+            return res.json({ error: "permission denied" });
         }
     }
     catch (err) {

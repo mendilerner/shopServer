@@ -1,7 +1,7 @@
 [
     {
         "email": "user1@example.com",
-        "password": "NewP@ssw0rd21222",
+        "password": "NewP@ssw0rd212229",
         "isAdmin": true,
         "creator": 1008,
         "id": 1007
@@ -11,20 +11,13 @@
         "password": "AdminP@ss123",
         "isAdmin": true,
         "id": 1008,
-        "creator": 1008
+        "creator": 1010
     },
     {
         "email": "user3@example.com",
         "password": "SecurePwd2023",
         "isAdmin": false,
         "id": 1009,
-        "creator": 1008
-    },
-    {
-        "email": "user4@example.com",
-        "password": "AnotherPwd567",
-        "isAdmin": false,
-        "id": 1010,
         "creator": 1008
     },
     {
