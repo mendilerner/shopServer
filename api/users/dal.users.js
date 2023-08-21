@@ -1,5 +1,6 @@
 import jsonfile from 'jsonfile';
 const FILE = './data/users.json';
+import Utils from '../../utils/Utils.js'
 
 
 const getUsers = async (req, res) => {
@@ -12,14 +13,6 @@ const getUser = async (_id) => {
     const users = await jsonfile.readFile(FILE);
     const user = users.find((user) => user.id === _id);
     return user
-}
-
-const addUser = async (newUser) => {
-    const users = await jsonfile.readFile(FILE);
-    users.push(newUser)
-    await jsonfile.writeFile(FILE, users)
-    return newUser
-
 }
 
 const updateUser = async (userForUpdate) => {

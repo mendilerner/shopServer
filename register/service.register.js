@@ -1,7 +1,8 @@
 import registerDal from './dal.register.js'
-//import Utils from '../utils/Utils.js'
+import Utils from '../utils/Utils.js'
 
 const signUp = async (_newUser) => {
+    _newUser.password = await Utils.encodedPassword(_newUser.password)
     const newUser = await registerDal.signUp(_newUser)
     if (!newUser) {
         return false
@@ -12,13 +13,10 @@ const signUp = async (_newUser) => {
 const login = async (userEmail, userPassword) => {
     const user = await registerDal.login(userEmail, userPassword)
     if (user) {
-        if (user.password === userPassword){
+        const validPassword = await Utils.compareEncodedPassword(userPassword, user.password)
+        if (validPassword) {
             return true
         }
-        // const validPassword = await Utils.compareEncodedPassword(password, user.password)
-        // if (validPassword) {
-        //     return true
-        // }
     }
     return false
 }

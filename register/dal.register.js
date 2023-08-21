@@ -1,6 +1,7 @@
 import jsonfile from 'jsonfile';
 const FILE = './data/users.json';
 
+
 const signUp = async (newUser) => {
     const users = await jsonfile.readFile(FILE);
     let userExist = users.find((user) => user.email === newUser.email)
@@ -9,6 +10,12 @@ const signUp = async (newUser) => {
     }
     else {
         newUser.id = users[users.length - 1].id + 1
+        if(!newUser.creator){
+            newUser.creator = newUser.id
+        }
+        if(!newUser.isAdmin){
+            newUser.isAdmin = false
+        }
         users.push(newUser)
         await jsonfile.writeFile(FILE, users)
         return newUser
@@ -31,4 +38,3 @@ const funcs = { login , signUp}
 export default funcs
 
 
-//login().then((data) => (console.log(data)))

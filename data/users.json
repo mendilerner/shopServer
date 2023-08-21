@@ -1,30 +1,37 @@
 [
     {
         "email": "user1@example.com",
-        "password": "NewP@ssw0rd212229",
+        "password": "$2b$10$hzNOG5p7rFTwUOBb3f5f..GOq0f5pTuMXWoieMbeOfmdmdgjSjvjG",
         "isAdmin": true,
-        "creator": 1008,
+        "creator": 1012,
         "id": 1007
     },
     {
         "email": "admin@example.com",
-        "password": "AdminP@ss123",
+        "password": "$2b$10$nKf7DWXPaWoJ203vPyYPneTNbAqzjKVGbzWVFXsD7GZVwh0nyATSW",
         "isAdmin": true,
-        "id": 1008,
-        "creator": 1010
+        "creator": 1012,
+        "id": 1008
     },
     {
         "email": "user3@example.com",
-        "password": "SecurePwd2023",
+        "password": "$2b$10$.cv2YRMfiabL98w9s8yo7.oABlyZSWyn21ecQ1ll4dZ.PDrWwvzfG",
         "isAdmin": false,
-        "id": 1009,
-        "creator": 1008
+        "creator": 1008,
+        "id": 1009
     },
     {
-        "email": "user5@example.com",
-        "password": "UserPwd789",
+        "email": "user3@example.com",
+        "password": "$2b$10$563HRkKMFo.JND2iD4DL8O/Ods276wpjZGL8hagq4IbayavBAZ7Z2",
         "isAdmin": false,
-        "id": 1011,
-        "creator": 1007
+        "creator": 1008,
+        "id": 1011
+    },
+    {
+        "email": "user96@example.com",
+        "password": "$2b$10$mDD9LFotzh/FFHdA5gM7sOzWM4H4jJj99w0019LfJovZTYNlp08nm",
+        "id": 1012,
+        "creator": 1012,
+        "isAdmin": true
     }
 ]

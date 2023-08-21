@@ -1,5 +1,5 @@
 import userDal from './dal.users.js'
-//import Utils from './../../Utils.js'
+import Utils from '../../utils/Utils.js'
 
 const getUsers = async (req, res) => {
     const users = await userDal.getUsers();
@@ -12,7 +12,7 @@ const getUser = async (userId) => {
     };
 
 const updateUser = async (userForUpdate) =>{
-    //userForUpdate.password = await Utils.encodedPassword(userForUpdate.password)
+    userForUpdate.password = await Utils.encodedPassword(userForUpdate.password)
     const updatedUser = await userDal.updateUser(userForUpdate);
     return updatedUser
 }
