@@ -1,1 +1,37 @@
-[{"id":1000,"email":"abcExample@gmail.com","password":"P@ssw0rd1","isAdmin":true},{"id":1001,"email":"user2@example.com","password":"P@ssw0rd2","isAdmin":false},{"id":1002,"email":"user3@example.com","password":"S3cur3P@ss","isAdmin":false},{"id":1003,"email":"admin@example.com","password":"AdminP@ss1","isAdmin":true},{"id":1004,"email":"user5@example.com","password":"N3wP@ssw0rd","isAdmin":false},{"id":1005,"email":"user6@example.com","password":"Str0ngPwd!","isAdmin":false},{"email":"beniExample@gmail.com","password":"P@ssw0rd14","isAdmin":true,"id":1006}]
+[
+    {
+        "email": "user1@example.com",
+        "password": "NewP@ssw0rd21222",
+        "isAdmin": true,
+        "creator": 1008,
+        "id": 1007
+    },
+    {
+        "email": "admin@example.com",
+        "password": "AdminP@ss123",
+        "isAdmin": true,
+        "id": 1008,
+        "creator": 1008
+    },
+    {
+        "email": "user3@example.com",
+        "password": "SecurePwd2023",
+        "isAdmin": false,
+        "id": 1009,
+        "creator": 1008
+    },
+    {
+        "email": "user4@example.com",
+        "password": "AnotherPwd567",
+        "isAdmin": false,
+        "id": 1010,
+        "creator": 1008
+    },
+    {
+        "email": "user5@example.com",
+        "password": "UserPwd789",
+        "isAdmin": false,
+        "id": 1011,
+        "creator": 1007
+    }
+]

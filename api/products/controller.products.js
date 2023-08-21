@@ -1,6 +1,5 @@
 import productsService from './service.products.js'
 import { v4 as uuidv4 } from 'uuid';
-//import Utils from './../Utils.js'
 
 
 const getProducts = async (req, res) => {

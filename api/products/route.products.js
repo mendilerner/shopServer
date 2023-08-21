@@ -1,22 +1,21 @@
 import express from 'express';
 import productsController from './controller.products.js'
-// import emailValidator from './../../middleWare/emailValidator.js';
-// import passwordValidator from './../../middleWare/passwordValidator.js';
+import middleWare from './middleWare.js';
 const router = express.Router();
 
 
 
 router.get('/', productsController.getProducts);
 
-router.get('/:id', productsController.getProduct)
+router.get('/:id', middleWare.idValidate, productsController.getProduct)
 
-router.post('/', productsController.addProduct)
+router.post('/', middleWare.productValidate, productsController.addProduct)
 
-router.put('/:id', productsController.updateProduct)
+router.put('/:id', middleWare.idValidate, middleWare.productValidate, productsController.updateProduct)
 
-router.delete('/:id', productsController.deleteProduct)
+router.delete('/:id', middleWare.idValidate, productsController.deleteProduct)
 
-router.patch('/:id', productsController.updateProperty)
+router.patch('/:id', middleWare.idValidate, middleWare.patchProductValidate, productsController.updateProperty)
 
 
 export default router;
