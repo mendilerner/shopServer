@@ -20,8 +20,8 @@ const getProduct = async (_id) => {
 
 const addProduct = async (newProduct) => {
     const products = await jsonfile.readFile(FILE);
-    const newId = products[products.length - 1].id + 1
-    newProduct.id = newId 
+    const newId = getMaxUserId(products) + 1
+    newProduct.id = newId
     products.push(newProduct)
     await jsonfile.writeFile(FILE, products)
     return newProduct
@@ -81,6 +81,24 @@ const convertID = async (_quantitySize) => {
     return products
 
 }
+
+function getMaxUserId(_elements) {
+    let maxId = _elements[0].id;
+    for (const element of _elements) {
+        if (element.id > maxId) {
+            maxId = element.id;
+        }
+    }
+    return maxId;
+}
+
+
+
+
+
+
+
+
 const funcs = {
     getProducts,
     getProduct,

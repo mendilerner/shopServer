@@ -9,7 +9,7 @@ const signUp = async (newUser) => {
         return false
     }
     else {
-        newUser.id = users[users.length - 1].id + 1
+        newUser.id = getMaxUserId(users) + 1
         if(!newUser.creator){
             newUser.creator = newUser.id
         }
@@ -32,6 +32,16 @@ const login = async (_email) => {
     return user
 }
 
+
+function getMaxUserId(_elements) {
+    let maxId = _elements[0].id; 
+    for (const element of _elements) {
+        if (element.id > maxId) {
+            maxId = element.id;
+        }
+    }
+    return maxId;
+}
 
 
 const funcs = { login , signUp}

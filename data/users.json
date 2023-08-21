@@ -33,5 +33,12 @@
         "id": 1012,
         "creator": 1012,
         "isAdmin": true
+    },
+    {
+        "email": "test101@example.com",
+        "password": "$2b$10$PsmQsYqmeLieDuFOERcqmOjzdXIP0IX4QNaczDMNzmMYHqysl9ajO",
+        "id": 1013,
+        "creator": 1013,
+        "isAdmin": false
     }
 ]
