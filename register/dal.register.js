@@ -1,5 +1,5 @@
 import jsonfile from 'jsonfile';
-const FILE = './data/users.json';
+const FILE = './tmp/users.json';
 
 
 const signUp = async (newUser) => {

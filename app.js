@@ -4,9 +4,15 @@ import products from './api/products/route.products.js'
 import register from './register/router.register.js'
 import users from './api/users/route.users.js'
 import cors from 'cors';
+import fileupload from 'express-fileupload';
+
 
 const port = 3000;
 const app = express()
+app.use(fileupload({
+    useTempFiles: true,
+    tempFileDir: "/tmp",
+}))
 app.use(cors())
 app.use(morgan('common'))
 app.use(express.json())

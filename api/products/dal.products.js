@@ -1,6 +1,7 @@
 import { error } from 'console';
 import jsonfile from 'jsonfile';
-const FILE = './data/products.json';
+const FILE = './tmp/products.json';
+
 
 
 const getProducts = async () => {

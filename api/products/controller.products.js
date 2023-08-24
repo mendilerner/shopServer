@@ -36,7 +36,7 @@ const addProduct = async (req, res) => {
     try {
         const newProduct = req.body
         const createdProduct = await productsService.addProduct(newProduct)
-        res.status(200).json(createdProduct)
+        res.status(200).json({success: "addedSucssesfuli"})
     }
     catch (err) {
         console.log(err)
@@ -55,7 +55,7 @@ const updateProduct = async (req, res) => {
             res.json({ error: 'Product has not exist' })
             return
         }
-        res.status(200).json(updatedProduct)
+        res.status(200).json({success: "updatedSucssesfuli"})
     }
     catch (err) {
         console.log(err)
@@ -69,7 +69,7 @@ const deleteProduct = async (req, res) => {
         const ProductId = Number(req.params.id)
         const deletedProduct = await productsService.deleteProduct(ProductId)
         if (deletedProduct) {
-            res.status(200).json(deletedProduct)
+            res.status(200).json({success: "deletedSucssesfuli"})
         }
         else if (deletedProduct === false) {
             res.send('Product does not exist')
