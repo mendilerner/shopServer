@@ -19,7 +19,7 @@ const getProduct = async (req, res) => {
         console.log('enter to product/', currentId);
         const product = await productsService.getProduct(currentId);
         if (!product) {
-            res.send('product does not exist')
+            res.status(400).json({message: 'product does not exist'})
         }
         else {
             res.status(200).json(product)

@@ -3,9 +3,11 @@ import morgan from 'morgan'
 import products from './api/products/route.products.js'
 import register from './register/router.register.js'
 import users from './api/users/route.users.js'
+import cors from 'cors';
+
 const port = 3000;
 const app = express()
-
+app.use(cors())
 app.use(morgan('common'))
 app.use(express.json())
 
